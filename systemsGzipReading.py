@@ -129,7 +129,7 @@ with gzip.open("E:\Elite galaxy map\galaxy.json.gz", 'r') as allSystemsFile:
             #curMaxNumOfMoons = 0
             curMaxLengthOfTheNameOfLetters = 0
             isPlanetWithAllTier4Materials = False
-
+            planetWithAllTier4MaterialsName = ""
             for body in bodies:
                 if body["type"] == 'Star':
                     numOfStars += 1
@@ -208,6 +208,7 @@ with gzip.open("E:\Elite galaxy map\galaxy.json.gz", 'r') as allSystemsFile:
                                         "Tellurium" in body["materials"] and "Technetium" in body["materials"] and \
                                         "Selenium" in body["materials"]:
                                     isPlanetWithAllTier4Materials = True
+                                    planetWithAllTier4MaterialsName = body["name"]
                         if body["subType"] == "Water world":
                             numOfWaterBasedPlanets += 1
                         if "isLandable" in body.keys() and body["isLandable"]:
@@ -326,7 +327,10 @@ with gzip.open("E:\Elite galaxy map\galaxy.json.gz", 'r') as allSystemsFile:
             if checkIfMaxAndWriteInFile(curMaxLengthOfTheNameOfLetters, maxLengthOfTheNameOfLetters, "maxLengthOfTheNameOfLetters.txt", numOfLine, name, line):
                 maxLengthOfTheNameOfLetters = curMaxLengthOfTheNameOfLetters
 
-            #isPlanetWithAllTier4Materials
+            if isPlanetWithAllTier4Materials:
+                with open("planetsWithAllTier4RawMaterials.txt", 'a') as systemsFile:
+                    systemsFile.write(name + ' $' + str(planetWithAllTier4MaterialsName) + '$\n')
+                    systemsFile.write(line + '\n')
             #different types of bodies
 
         if numOfLine == prevNumOfLine * 2:
