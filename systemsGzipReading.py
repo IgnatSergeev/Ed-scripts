@@ -1,6 +1,17 @@
 import json
 import gzip
 
+def checkIfMaxAndWriteInFile(curNum, maxNum, fileName, numOfLine, curSystemName):
+    if curNum == maxNum:
+        with open(fileName, 'a') as systemsFile:
+            systemsFile.write(curSystemName + ' $' + str(curNum) + '$\n')
+        return 0
+    if curNum > maxNum:
+        print(fileName, "= ", curNum, numOfLine)
+        with open(fileName, 'w') as systemsFile:
+            systemsFile.write(curSystemName + ' $' + str(curNum) + '$\n')
+        return 1
+
 with gzip.open("E:\Elite galaxy map\galaxy.json.gz", 'r') as allSystemsFile:
     numOfLine = 0
     prevNumOfLine = 1
@@ -27,23 +38,12 @@ with gzip.open("E:\Elite galaxy map\galaxy.json.gz", 'r') as allSystemsFile:
                     numOfStars += 1
                 numOfBodies += 1
 
-            if numOfBodies == maxNumOfBodies:
-                with open("bodies.txt", 'a') as systemsFile:
-                    systemsFile.write(name + ' $' + str(numOfBodies) + '$\n')
-            if numOfBodies > maxNumOfBodies:
+            if checkIfMaxAndWriteInFile(numOfBodies, maxNumOfBodies, "SystemsWithMaxNumOfBodies.txt", numOfLine, name):
                 maxNumOfBodies = numOfBodies
-                print("Max num of bodies = ", maxNumOfBodies, numOfLine)
-                with open("bodies.txt", 'w') as systemsFile:
-                    systemsFile.write(name + ' $' + str(numOfBodies) + '$\n')
 
-            if numOfStars == maxNumOfStars:
-                with open("systems3.txt", 'a') as systemsFile:
-                    systemsFile.write(name + ' $' + str(numOfStars) + '$\n')
-            if numOfStars > maxNumOfStars:
+            if checkIfMaxAndWriteInFile(numOfStars, maxNumOfStars, "SystemsWithMaxNumOfStars.txt", numOfLine, name):
                 maxNumOfStars = numOfStars
-                print("Max num of stars = ",maxNumOfStars, numOfLine)
-                with open("systems3.txt", 'w') as systemsFile:
-                    systemsFile.write(name + ' $' + str(numOfStars) + '$\n')
+
 
         if numOfLine == prevNumOfLine * 2:
             prevNumOfLine *= 2
