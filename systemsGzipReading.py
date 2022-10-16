@@ -3,10 +3,17 @@ import gzip
 
 
 def checkIfMaxAndWriteInFile(curNum, maxNum, fileName, numOfLine, curSystemName, fullLine):
+    if fileName == "maxLengthOfTheNameOfLetters.txt" and curNum >= 6:
+        with open("allDataFiles/maxLengthOfTheNameOfLettersWithMoreTHan6Characters.txt", 'a') as systemsFile:
+            systemsFile.write(curSystemName + ' $' + str(curNum) + '$\n')
+            systemsFile.write(fullLine + '\n')
+    if fileName == "maxNumOfStars.txt" and curNum >= 20:
+        with open("allDataFiles/maxNumOfStarsWithMoreThan20Stars.txt", 'a') as systemsFile:
+            systemsFile.write(curSystemName + ' $' + str(curNum) + '$\n')
+            systemsFile.write(fullLine + '\n')
     if curNum == maxNum:
         with open("allDataFiles/" + fileName, 'a') as systemsFile:
             systemsFile.write(curSystemName + ' $' + str(curNum) + '$\n')
-            systemsFile.write(fullLine + '\n')
         return 0
     if curNum > maxNum:
         print(fileName, "= ", curNum, numOfLine)
@@ -14,20 +21,21 @@ def checkIfMaxAndWriteInFile(curNum, maxNum, fileName, numOfLine, curSystemName,
             systemsFile.write(curSystemName + ' $' + str(curNum) + '$\n')
             systemsFile.write(fullLine + '\n')
         return 1
+    return 0
 
 
 def checkIfMinAndWriteInFile(curNum, minNum, fileName, numOfLine, curSystemName, fullLine):
-    if curNum == minNum:
+    if curNum != -1 and curNum == minNum:
         with open("allDataFiles/" + fileName, 'a') as systemsFile:
             systemsFile.write(curSystemName + ' $' + str(curNum) + '$\n')
-            systemsFile.write(fullLine + '\n')
         return 0
-    if curNum < minNum:
+    if curNum != -1 and (curNum < minNum or minNum == -1):
         print(fileName, "= ", curNum, numOfLine)
         with open("allDataFiles/" + fileName, 'w') as systemsFile:
             systemsFile.write(curSystemName + ' $' + str(curNum) + '$\n')
             systemsFile.write(fullLine + '\n')
         return 1
+    return 0
 
 
 with gzip.open("E:\Elite galaxy map\galaxy.json.gz", 'r') as allSystemsFile:
@@ -42,28 +50,30 @@ with gzip.open("E:\Elite galaxy map\galaxy.json.gz", 'r') as allSystemsFile:
     maxNumOfPlanets = 0
 
     maxStarTemperature = 0
-    minStarTemperature = 0
+    minStarTemperature = -1
     maxGasGiantTemperature = 0
-    minGasGiantTemperature = 0
+    minGasGiantTemperature = -1
 
     maxGasGiantGravity = 0
-    minGasGiantGravity = 0
+    minGasGiantGravity = -1
     maxPlanetGravity = 0
-    minPlanetGravity = 0
+    minPlanetGravity = -1
 
     maxGasGiantMass = 0
-    minGasGiantMass = 0
+    minGasGiantMass = -1
     maxPlanetMass = 0
-    minPlanetMass = 0
+    minPlanetMass = -1
     maxStarMass = 0
-    minStarMass = 0
+    minStarMass = -1
 
     maxGasGiantRadius = 0
-    minGasGiantRadius = 0
+    minGasGiantRadius = -1
     maxPlanetRadius = 0
-    minPlanetRadius = 0
+    minPlanetRadius = -1
+    minLandablePlanetRadius = -1
+    minLandablePlanetRadiusNotEqualTo0 = -1
     maxStarRadius = 0
-    minStarRadius = 0
+    minStarRadius = -1
 
     maxNumOfWaterBasedPlanets = 0
     maxNumOfLandablePlanets = 0
@@ -73,7 +83,7 @@ with gzip.open("E:\Elite galaxy map\galaxy.json.gz", 'r') as allSystemsFile:
     #maxNumOfMoons = 0
     #maxExpectedValueOfMainTier4RawMaterials = 0
     differentTypesOfBodies = set()
-
+    differentSignals = set()
     for byteLine in allSystemsFile:
         numOfLine += 1
         line = byteLine.decode("utf-8")
@@ -82,9 +92,12 @@ with gzip.open("E:\Elite galaxy map\galaxy.json.gz", 'r') as allSystemsFile:
             try:
                 jsonObj = json.loads('{ "info":' + line + '"empty":0}')
             except:
-                print(numOfLine)
-                print(line)
-                continue
+                try:
+                    jsonObj = json.loads('{ "info":' + line + '}')
+                except:
+                    print(numOfLine)
+                    print(line)
+                    continue
 
             name = jsonObj["info"]["name"]
             bodies = jsonObj["info"]["bodies"]
@@ -99,28 +112,30 @@ with gzip.open("E:\Elite galaxy map\galaxy.json.gz", 'r') as allSystemsFile:
             numOfPlanets = 0
 
             curMaxStarTemperature = 0
-            curMinStarTemperature = 0
+            curMinStarTemperature = -1
             curMaxGasGiantTemperature = 0
-            curMinGasGiantTemperature = 0
+            curMinGasGiantTemperature = -1
 
             curMaxGasGiantGravity = 0
-            curMinGasGiantGravity = 0
+            curMinGasGiantGravity = -1
             curMaxPlanetGravity = 0
-            curMinPlanetGravity = 0
+            curMinPlanetGravity = -1
 
             curMaxGasGiantMass = 0
-            curMinGasGiantMass = 0
+            curMinGasGiantMass = -1
             curMaxPlanetMass = 0
-            curMinPlanetMass = 0
+            curMinPlanetMass = -1
             curMaxStarMass = 0
-            curMinStarMass = 0
+            curMinStarMass = -1
 
             curMaxGasGiantRadius = 0
-            curMinGasGiantRadius = 0
+            curMinGasGiantRadius = -1
             curMaxPlanetRadius = 0
-            curMinPlanetRadius = 0
+            curMinPlanetRadius = -1
             curMaxStarRadius = 0
-            curMinStarRadius = 0
+            curMinStarRadius = -1
+            curMinLandablePlanetRadius = -1
+            curMinLandablePlanetRadiusNotEqualTo0 = -1
 
             numOfWaterBasedPlanets = 0
             numOfLandablePlanets = 0
@@ -142,44 +157,48 @@ with gzip.open("E:\Elite galaxy map\galaxy.json.gz", 'r') as allSystemsFile:
                             if body["orbitalInclination"] == mainStarOrbitalInclination \
                                     and body["orbitalEccentricity"] == mainStarOrbitalEccentricity:
                                 numOfStarsWithSameOrbitAsMainStar += 1
+
                     if "solarMasses" in body.keys():
                         if body["solarMasses"] > curMaxStarMass:
                             curMaxStarMass = body["solarMasses"]
-                        if body["solarMasses"] < curMinStarMass:
+                        if body["solarMasses"] < curMinStarMass or curMinStarMass == -1:
                             curMinStarMass = body["solarMasses"]
                     if "solarRadius" in body.keys():
                         if body["solarRadius"] > curMaxStarRadius:
                             curMaxStarRadius = body["solarRadius"]
-                        if body["solarRadius"] < curMinStarRadius:
+                        if body["solarRadius"] < curMinStarRadius or curMinStarRadius == -1:
                             curMinStarRadius = body["solarRadius"]
                     if "surfaceTemperature" in body.keys():
                         if body["surfaceTemperature"] > curMaxStarTemperature:
                             curMaxStarTemperature = body["surfaceTemperature"]
-                        if body["surfaceTemperature"] < curMinStarTemperature:
+                        if body["surfaceTemperature"] < curMinStarTemperature or curMinStarTemperature == -1:
                             curMinStarTemperature = body["surfaceTemperature"]
+
                 elif body["type"] == 'Planet':
                     if "gas giant" in body["subType"]:
                         numOfGasGiants += 1
+
                         if "earthMasses" in body.keys():
                             if body["earthMasses"] > curMaxGasGiantMass:
                                 curMaxGasGiantMass = body["earthMasses"]
-                            if body["earthMasses"] < curMinGasGiantMass:
+                            if body["earthMasses"] < curMinGasGiantMass or curMinGasGiantMass == -1:
                                 curMinGasGiantMass = body["earthMasses"]
                         if "radius" in body.keys():
                             if body["radius"] > curMaxGasGiantRadius:
                                 curMaxGasGiantRadius = body["radius"]
-                            if body["radius"] < curMinGasGiantRadius:
+                            if body["radius"] < curMinGasGiantRadius or curMinGasGiantRadius == -1:
                                 curMinGasGiantRadius = body["radius"]
                         if "gravity" in body.keys():
                             if body["gravity"] > curMaxGasGiantGravity:
                                 curMaxGasGiantGravity = body["gravity"]
-                            if body["gravity"] < curMinGasGiantGravity:
+                            if body["gravity"] < curMinGasGiantGravity or curMinGasGiantGravity == -1:
                                 curMinGasGiantGravity = body["gravity"]
                         if "surfaceTemperature" in body.keys():
                             if body["surfaceTemperature"] > curMaxGasGiantTemperature:
                                 curMaxGasGiantTemperature = body["surfaceTemperature"]
-                            if body["surfaceTemperature"] < curMinGasGiantTemperature:
+                            if body["surfaceTemperature"] < curMinGasGiantTemperature or curMinGasGiantTemperature == -1:
                                 curMinGasGiantTemperature = body["surfaceTemperature"]
+
                     else:
                         numOfPlanets += 1
                         curStackOfMoons = 0
@@ -191,24 +210,47 @@ with gzip.open("E:\Elite galaxy map\galaxy.json.gz", 'r') as allSystemsFile:
                                     is0Has0digits = False
                                     break
                             if is0Has0digits:
-                                if len(planetName[0]) > curMaxLengthOfTheNameOfLetters:
+                                if len(planetName[0]) > curMaxLengthOfTheNameOfLetters and name in body["name"]:
                                     curMaxLengthOfTheNameOfLetters = len(planetName[0])
+                        if "signals" in body.keys():
+                            for signal in body["signals"]["signals"]:
+                                differentSignals.add(signal)
+                                if signal == "$SAA_SignalType_Human;":
+                                    with open("allDataFiles/HumanSignals.txt", 'a') as HumanSignalsFile:
+                                        HumanSignalsFile.write(name + '(' + body["name"] + ')')
+                                if signal == "$SAA_SignalType_Guardian;":
+                                    with open("allDataFiles/GuardianSignals.txt", 'a') as GuardianSignalsFile:
+                                        GuardianSignalsFile.write(name + '(' + body["name"] + ')')
+                                if signal == "$SAA_SignalType_PlanetAnomaly;":
+                                    with open("allDataFiles/PlanetAnomalySignals.txt", 'a') as PlanetAnomalySignalsFile:
+                                        PlanetAnomalySignalsFile.write(name + '(' + body["name"] + ')')
+                                if signal == "$SAA_SignalType_Other;":
+                                    with open("allDataFiles/OtherSignals.txt", 'a') as OtherSignalsFile:
+                                        OtherSignalsFile.write(name + '(' + body["name"] + ')')
+                                if signal == "$SAA_SignalType_Thargoid;":
+                                    with open("allDataFiles/ThargoidSignals.txt", 'a') as ThargoidSignalsFile:
+                                        ThargoidSignalsFile.write(name + '(' + body["name"] + ')')
+                                if signal == "LowTemperatureDiamond":
+                                    with open("allDataFiles/LowTemperatureDiamondSignals.txt", 'a') as LowTemperatureDiamondSignalsFile:
+                                        LowTemperatureDiamondSignalsFile.write(name + '(' + body["name"] + ')')
                         if "parents" in body.keys():
                             for parent in body["parents"]:
                                 if "Planet" in parent:
                                     curStackOfMoons += 1
                             if curStackOfMoons > curMaxStackOfMoons:
                                 curMaxStackOfMoons = curStackOfMoons
+
                         if "materials" in body.keys():
                             if len(body["materials"]) > curMaxNumOfDifferentResourcesOnPlanet:
                                 curMaxNumOfDifferentResourcesOnPlanet = len(body["materials"])
-                            if body["subType"] == "High metal content world":
+                            if body["subType"] == "High metal content world" and numOfLine == 87324391:
                                 if "Yttrium" in body["materials"] and "Polonium" in body["materials"] and \
                                         "Ruthenium" in body["materials"] and "Antimony" in body["materials"] and \
                                         "Tellurium" in body["materials"] and "Technetium" in body["materials"] and \
                                         "Selenium" in body["materials"]:
                                     isPlanetWithAllTier4Materials = True
                                     planetWithAllTier4MaterialsName = body["name"]
+
                         if body["subType"] == "Water world":
                             numOfWaterBasedPlanets += 1
                         if "isLandable" in body.keys() and body["isLandable"]:
@@ -216,21 +258,27 @@ with gzip.open("E:\Elite galaxy map\galaxy.json.gz", 'r') as allSystemsFile:
                         if "earthMasses" in body.keys():
                             if body["earthMasses"] > curMaxPlanetMass:
                                 curMaxPlanetMass = body["earthMasses"]
-                            if body["earthMasses"] < curMinPlanetMass:
+                            if body["earthMasses"] < curMinPlanetMass or curMinPlanetMass == -1:
                                 curMinPlanetMass = body["earthMasses"]
                         if "radius" in body.keys():
                             if body["radius"] > curMaxPlanetRadius:
                                 curMaxPlanetRadius = body["radius"]
-                            if body["radius"] < curMinPlanetRadius:
+                            if body["radius"] < curMinPlanetRadius or curMinPlanetRadius == -1:
                                 curMinPlanetRadius = body["radius"]
+                                if "isLandable" in body.keys() and body["isLandable"] and (body["radius"] < curMinLandablePlanetRadius or curMinLandablePlanetRadius == -1):
+                                    curMinLandablePlanetRadius = body["radius"]
+                                if "isLandable" in body.keys() and body["isLandable"] and body["radius"] != 0 and (body["radius"] < curMinLandablePlanetRadiusNotEqualTo0 or curMinLandablePlanetRadiusNotEqualTo0 == -1):
+                                    curMinLandablePlanetRadiusNotEqualTo0 = body["radius"]
+
                         if "gravity" in body.keys():
                             if body["gravity"] > curMaxPlanetGravity:
                                 curMaxPlanetGravity = body["gravity"]
-                            if body["gravity"] < curMinPlanetGravity:
+                            if body["gravity"] < curMinPlanetGravity or curMinPlanetGravity == -1:
                                 curMinPlanetGravity = body["gravity"]
+
                 else:
                     if not(body["type"] in differentTypesOfBodies):
-                        with open("DifferentTypesOfBodies.txt", 'a') as systemsFile:
+                        with open("allDataFiles/DifferentTypesOfBodies.txt", 'a') as systemsFile:
                             systemsFile.write(name + ' $' + str(body["type"]) + '$\n')
                             systemsFile.write(line + '\n')
                         differentTypesOfBodies.add(body["type"])
@@ -306,6 +354,12 @@ with gzip.open("E:\Elite galaxy map\galaxy.json.gz", 'r') as allSystemsFile:
             if checkIfMinAndWriteInFile(curMinPlanetRadius, minPlanetRadius, "minPlanetRadius.txt", numOfLine, name, line):
                 minPlanetRadius = curMinPlanetRadius
 
+            if checkIfMinAndWriteInFile(curMinLandablePlanetRadius, minLandablePlanetRadius, "minLandablePlanetRadius.txt", numOfLine, name, line):
+                minLandablePlanetRadius = curMinLandablePlanetRadius
+
+            if checkIfMinAndWriteInFile(curMinLandablePlanetRadiusNotEqualTo0, minLandablePlanetRadiusNotEqualTo0, "minLandablePlanetRadiusNotEqualTo0.txt", numOfLine, name, line):
+                minLandablePlanetRadiusNotEqualTo0 = curMinLandablePlanetRadiusNotEqualTo0
+
             if checkIfMaxAndWriteInFile(curMaxStarRadius, maxStarRadius, "maxStarRadius.txt", numOfLine, name, line):
                 maxStarRadius = curMaxStarRadius
 
@@ -336,3 +390,4 @@ with gzip.open("E:\Elite galaxy map\galaxy.json.gz", 'r') as allSystemsFile:
         if numOfLine == prevNumOfLine * 2:
             prevNumOfLine *= 2
             print(numOfLine)
+    print(differentSignals)

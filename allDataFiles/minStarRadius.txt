@@ -1,0 +1,87 @@
+Pru Euq CR-V d2-0 $0.0$
+	{"id64":10209020315,"name":"Pru Euq CR-V d2-0","coords":{"x":-1335.84375,"y":443.46875,"z":458.1875},"allegiance":null,"government":"None","primaryEconomy":"None","secondaryEconomy":"None","security":"Anarchy","population":0,"date":"2020-09-05 19:53:35+00","bodies":[{"id64":72057604246948251,"bodyId":2,"name":"Pru Euq CR-V d2-0 A","type":"Star","subType":"F (White) Star","distanceToArrival":0.0,"mainStar":true,"age":1622,"spectralClass":"F3","luminosity":"Vb","absoluteMagnitude":3.335205,"solarMasses":1.472656,"solarRadius":1.37832636089145,"surfaceTemperature":6943.0,"rotationalPeriod":2.46417378510417,"axialTilt":0.0,"orbitalPeriod":0.543391476898148,"semiMajorAxis":0.00902231336861168,"orbitalEccentricity":0.035215,"orbitalInclination":-61.089649,"argOfPeriapsis":72.570449,"stations":[],"updateTime":"2020-09-05 19:53:40+00"},{"id64":108086401265912219,"bodyId":3,"name":"Pru Euq CR-V d2-0 B","type":"Star","subType":"F (White) Star","distanceToArrival":10.0,"mainStar":false,"age":1622,"spectralClass":"F4","luminosity":"Vb","absoluteMagnitude":3.774292,"solarMasses":1.398438,"solarRadius":1.18432611933861,"surfaceTemperature":6770.0,"rotationalPeriod":2.44081491246528,"rotationalPeriodTidallyLocked":false,"axialTilt":0.0,"orbitalPeriod":0.543391476898148,"semiMajorAxis":0.00950115346040149,"orbitalEccentricity":0.035215,"orbitalInclination":-61.089649,"argOfPeriapsis":252.570444,"stations":[],"updateTime":"2020-09-05 19:53:41+00"},{"id64":144115198284876187,"bodyId":4,"name":"Pru Euq CR-V d2-0 C","type":"Star","subType":"K (Yellow-Orange) Star","distanceToArrival":0.0,"mainStar":true,"age":0,"spectralClass":"K","solarMasses":0.0,"solarRadius":0.0,"surfaceTemperature":0.0,"rotationalPeriodTidallyLocked":false,"stations":[],"updateTime":"2020-09-05 19:53:57+00"}],"stations":[]},
+
+Smootaae DC-K d9-0 $0.0$
+Flyae Proae EA-Z c16-0 $0.0$
+Flyae Proae QX-T c19-0 $0.0$
+Flyae Proae FL-O c22-0 $0.0$
+Flyae Proae RI-J c25-0 $0.0$
+Syroageau AG-B c2-0 $0.0$
+Syroageau SO-V c4-0 $0.0$
+Plio Eurl EZ-D d13-1 $0.0$
+Smojaea IT-H d10-1 $0.0$
+Smootaae HY-H d10-1 $0.0$
+Plio Eurl TK-N c23-0 $0.0$
+Ausaik ZL-L c21-0 $0.0$
+Ausaik YF-N c20-0 $0.0$
+Eolls Pre ZP-A c3-1 $0.0$
+Blo Thae OC-M d7-9 $0.0$
+Hedgia ZX-P c19-1 $0.0$
+Drootu AC-T b37-0 $0.0$
+Traikaae NY-F b15-0 $0.0$
+Slege YR-I d10-19 $0.0$
+Chroabs QP-T b44-0 $0.0$
+Oochost BX-Y b6-0 $0.0$
+Aucoks VV-C b45-0 $0.0$
+Smojai DS-D b53-0 $0.0$
+Smojai EQ-A b41-0 $0.0$
+Nyauthi MP-G b56-0 $0.0$
+Traikeou ZO-Q d5-20 $0.0$
+Bleae Eurk UJ-Z d22 $0.0$
+Icteia PY-V b8-0 $0.0$
+Pria Eurk KY-O b33-0 $0.0$
+Eord Blao PT-Z c13-3 $0.0$
+Floalk ND-I d10-27 $0.0$
+Assaizz UU-C b27-0 $0.0$
+Boeths QX-U d2-41 $0.0$
+Prue Eohm TV-T d4-46 $0.0$
+Eord Blao GR-N d6-64 $0.0$
+Dryau Fraae KC-M c7-8 $0.0$
+Prue Eohm TV-T d4-70 $0.0$
+Drojo VR-U b36-1 $0.0$
+Aucoks VL-B b46-1 $0.0$
+Blu Thua AC-J b10-1 $0.0$
+Byeia Euq VD-K d8-91 $0.0$
+IC 1805 Sector PP-N c7-13 $0.0$
+Smojai BY-H c23-13 $0.0$
+Drojeae KN-B c16-16 $0.0$
+Drootu PL-W c18-17 $0.0$
+Outott RJ-K b8-2 $0.0$
+Drojeae EY-X b34-2 $0.0$
+Drojeae IE-W b35-2 $0.0$
+Aucoks XG-B b46-2 $0.0$
+Praea Euq ER-H b51-2 $0.0$
+Bleia Dryiae KT-O d7-172 $0.0$
+Prua Phoe CN-Q d6-174 $0.0$
+Prue Eohm NR-N c9-22 $0.0$
+Flyiedge HC-B d1-186 $0.0$
+Prae Drye BT-A b20-3 $0.0$
+Drojeae TF-D b32-3 $0.0$
+Clookuae YH-M c10-27 $0.0$
+Eodgorph DL-P d5-327 $0.0$
+Prooe Hypue KB-B b6-5 $0.0$
+Eafoff YB-Q b46-5 $0.0$
+Blu Euq RR-W b1-6 $0.0$
+Phipaa LI-S e4-3502 $0.0$
+Drojo ZX-S b37-7 $0.0$
+Dryio Flyuae VG-C d13-477 $0.0$
+Prae Drye GF-X b21-8 $0.0$
+Eol Prou FZ-A d550 $0.0$
+Clooku YV-L d8-589 $0.0$
+Ellaidst PR-T c17-76 $0.0$
+Ploi Aub HS-C b54-11 $0.0$
+Eodgorph DL-P d5-740 $0.0$
+Pro Aec AJ-A b55-13 $0.0$
+Eol Prou EZ-A d1304 $0.0$
+Dryio Flyuae YM-A d14-1322 $0.0$
+Scheau Blao AR-K d9-1581 $0.0$
+Eord Blao GR-N d6-1585 $0.0$
+Dryio Flyuae HA-K c23-252 $0.0$
+Phleedgaa KJ-G d11-2731 $0.0$
+Wepai AW-L c24-369 $0.0$
+Athairk KN-R d5-4102 $0.0$
+Phrae Flyou HP-J c11-729 $0.0$
+Dryi Briae EB-A c1032 $0.0$
+Wepai HI-I c26-1294 $0.0$
+Juenio YU-E c28-1322 $0.0$
+Dryi Briae AB-A c2106 $0.0$
