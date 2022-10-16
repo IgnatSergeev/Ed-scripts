@@ -217,22 +217,22 @@ with gzip.open("E:\Elite galaxy map\galaxy.json.gz", 'r') as allSystemsFile:
                                 differentSignals.add(signal)
                                 if signal == "$SAA_SignalType_Human;":
                                     with open("allDataFiles/HumanSignals.txt", 'a') as HumanSignalsFile:
-                                        HumanSignalsFile.write(name + '(' + body["name"] + ')')
+                                        HumanSignalsFile.write(name + '(' + body["name"] + ')\n')
                                 if signal == "$SAA_SignalType_Guardian;":
                                     with open("allDataFiles/GuardianSignals.txt", 'a') as GuardianSignalsFile:
-                                        GuardianSignalsFile.write(name + '(' + body["name"] + ')')
+                                        GuardianSignalsFile.write(name + '(' + body["name"] + ')\n')
                                 if signal == "$SAA_SignalType_PlanetAnomaly;":
                                     with open("allDataFiles/PlanetAnomalySignals.txt", 'a') as PlanetAnomalySignalsFile:
-                                        PlanetAnomalySignalsFile.write(name + '(' + body["name"] + ')')
+                                        PlanetAnomalySignalsFile.write(name + '(' + body["name"] + ')\n')
                                 if signal == "$SAA_SignalType_Other;":
                                     with open("allDataFiles/OtherSignals.txt", 'a') as OtherSignalsFile:
-                                        OtherSignalsFile.write(name + '(' + body["name"] + ')')
+                                        OtherSignalsFile.write(name + '(' + body["name"] + ')\n')
                                 if signal == "$SAA_SignalType_Thargoid;":
                                     with open("allDataFiles/ThargoidSignals.txt", 'a') as ThargoidSignalsFile:
-                                        ThargoidSignalsFile.write(name + '(' + body["name"] + ')')
+                                        ThargoidSignalsFile.write(name + '(' + body["name"] + ')\n')
                                 if signal == "LowTemperatureDiamond":
                                     with open("allDataFiles/LowTemperatureDiamondSignals.txt", 'a') as LowTemperatureDiamondSignalsFile:
-                                        LowTemperatureDiamondSignalsFile.write(name + '(' + body["name"] + ')')
+                                        LowTemperatureDiamondSignalsFile.write(name + '(' + body["name"] + ')\n')
                         if "parents" in body.keys():
                             for parent in body["parents"]:
                                 if "Planet" in parent:
